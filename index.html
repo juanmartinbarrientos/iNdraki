@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iNdraki | Enlaces Oficiales</title>
+    <meta name="description" content="Sitio oficial de iNdraki. Productor musical, beatmaker y creaciones sonoras.">
+
+    <!-- Tipografías: Gótica (UnifrakturCook / Pirata One) + Tech/Y2K (VT323, Syne, Outfit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Pirata+One&family=Syne:wght@700;800&family=UnifrakturCook:wght@700&family=VT323&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6.4.0 CDN para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hoja de estilos principal (CSS3 puro) -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Capas de Fondo: Imagen "imagen.jpeg", Degradado Nocturno (#24201A / #3F2548) y Textura Granulada -->
+    <div class="bg-dynamic" aria-hidden="true"></div>
+    <div class="bg-overlay" aria-hidden="true"></div>
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- Contenedor Principal Mobile-First (max-width: 480px) -->
+    <main class="main-container">
+
+        <!-- Barra Superior de Estado / Idioma -->
+        <nav class="top-bar" aria-label="Utilidades de perfil">
+            <div class="top-pill">
+                <span class="status-dot"></span>
+                <span>Placeholder · En Línea</span>
+            </div>
+            <button type="button" class="top-pill" onclick="showToast('Cambio de idioma (ES / EN) — Modo Maqueta')">
+                <i class="fa-solid fa-globe"></i>
+                <span>ES / EN</span>
+            </button>
+        </nav>
+
+        <!-- 1. CABECERA: Avatar Circular, Título Principal, Bio Corta y Redes Sociales -->
+        <header class="profile-header">
+
+            <!-- Avatar Circular con Flotación y Haz de Luz -->
+            <div class="avatar-float-container">
+                <div class="avatar-shine-box" title="Avatar de prueba (Placeholder)">
+                    <div class="avatar-placeholder-art">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <span class="avatar-placeholder-tag">Avatar</span>
+                    </div>
+                    <!-- Haz de luz animado -->
+                    <div class="avatar-flash-beam"></div>
+                </div>
+            </div>
+
+            <!-- Título Principal con Letra Gótica y Subtítulo Y2K/Tech -->
+            <h1 class="artist-title">iNdraki</h1>
+            <p class="artist-subtitle">Lanzamiento Destacado · Disponible Ahora</p>
+
+            <!-- Bio Corta Placeholder -->
+            <p class="artist-bio">
+                <strong>Productor Musical, Beatmaker &amp; Artista Visual.</strong> Texto de marcador de posición para la biografía corta y propuesta estética del proyecto.
+            </p>
+
+            <!-- Fila de Íconos de Redes Sociales -->
+            <div class="social-row" aria-label="Redes sociales del artista">
+                <a href="https://www.instagram.com/indraki13" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram @indraki13" title="Instagram: @indraki13">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@indraki13" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube @indraki13" title="YouTube: @indraki13">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="#spotify" class="social-btn" aria-label="Spotify" onclick="handlePlaceholderClick(event, 'Spotify Oficial de iNdraki')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="#tiktok" class="social-btn" aria-label="TikTok" onclick="handlePlaceholderClick(event, 'TikTok Oficial')">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a href="#soundcloud" class="social-btn" aria-label="SoundCloud" onclick="handlePlaceholderClick(event, 'SoundCloud / Sesiones')">
+                    <i class="fa-brands fa-soundcloud"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- 2. BLOQUE MULTIMEDIA DESTACADO (JoMa Sessions Vol. 12) -->
+        <section class="featured-media-card" aria-label="Contenido multimedia destacado">
+            <div class="media-header">
+                <div class="media-tabs">
+                    <button type="button" class="media-tab active" id="tab-yt" onclick="toggleMediaTab('yt')">
+                        <i class="fa-brands fa-youtube"></i>
+                        <span>YouTube</span>
+                    </button>
+                    <button type="button" class="media-tab" id="tab-ig" onclick="toggleMediaTab('ig')">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Reel IG</span>
+                    </button>
+                </div>
+                <span class="media-status-label" id="media-status-tag">En Reproducción</span>
+            </div>
+
+            <!-- Panel 1: YouTube con Autoplay, Mute inicial y Desmutear -->
+            <div id="media-panel-yt">
+                <div class="video-player-frame">
+                    <!-- Botón flotante para desmutear -->
+                    <button type="button" id="overlay-unmute-btn" class="overlay-unmute-btn" onclick="toggleMuteVideo()" title="Activar / Desactivar Sonido">
+                        <i class="fa-solid fa-volume-xmark" id="overlay-unmute-icon"></i>
+                        <span id="overlay-unmute-text">Desmutear</span>
+                    </button>
+
+                    <!-- Iframe YouTube con API JS activa, autoplay y mute -->
+                    <iframe 
+                        id="featured-youtube-video"
+                        src="https://www.youtube.com/embed/f2DJO3Uhr3M?enablejsapi=1&autoplay=1&mute=1&controls=1&rel=0&playsinline=1" 
+                        title="Cypher JoMa Sessions Vol. 12 | KOTAL BANGAZ, VID URBANA, MOTIN.82, INDRAKI" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Barra de Acción Directa Desmutear -->
+                <div class="media-unmute-action-bar">
+                    <button type="button" class="btn-unmute-banner" onclick="toggleMuteVideo()">
+                        <span class="unmute-pill-badge" id="banner-unmute-badge">
+                            <i class="fa-solid fa-volume-xmark" id="banner-unmute-icon"></i>
+                            <span id="banner-unmute-label">DESMUTEAR</span>
+                        </span>
+                        <span class="unmute-banner-text">Activar audio con banda en vivo</span>
+                    </button>
+                </div>
+
+                <!-- Ficha Completa de Información y Créditos JoMa Sessions Vol. 12 -->
+                <article class="video-details-card">
+                    <div class="video-main-heading">
+                        <h3 class="video-session-title">Cypher JoMa Sessions Vol. 12 | KOTAL BANGAZ, VID URBANA, MOTIN.82, INDRAKI</h3>
+                        <div class="video-date-badge">
+                            <i class="fa-solid fa-calendar-star"></i>
+                            <span>20 DE MARZO</span>
+                        </div>
+                    </div>
+
+                    <div class="video-synopsis">
+                        <p>
+                            ⭐️ <strong>Jo (jota de) Ma (maxi prieto)</strong> es un proyecto que busca, intenta y propone que distintos artistas del rap y otros géneros puedan exponer, mostrar y expresar sus temas a través de un formato tan atractivo como lo es tocar con banda en vivo.
+                        </p>
+                        <p>
+                            ✏️ En la actualidad, las producciones tienden a variar desde la más casera, fundada e iniciada en una casa con una computadora hasta el estudio con la tecnología más avanzada. Con JoMa, queremos unificar ese espectro con la banda en vivo que tanto poder tiene sobre un escenario.
+                        </p>
+                        <p>
+                            ✌️ JoMa es escuchar a nuestros artistas favoritos con soporte audiovisual de calidad, dirigido por Jota De, sumado a un grupo de músicos, liderados y elegidos por Maxi Prieto, que hacen esto por amor, lo que creemos que es fundamental para poder llevar adelante un proyecto como este.
+                        </p>
+                        <p>
+                            ⏳ Esperamos, desde JoMa, que ustedes, público y artistas, nos acompañen en este camino para poder crecer juntos hasta sobrepasar los límites que ni siquiera imaginamos. De antemano, gracias por ser parte. Esto recién empieza.
+                        </p>
+                    </div>
+
+                    <!-- Grilla de Créditos y Enlaces de Redes Sociales Oficiales -->
+                    <div class="credits-grid">
+                        <!-- Redes JoMa -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-satellite-dish"></i> Seguinos también en</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/jomasessions/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@jomasessions</span>
+                                </a>
+                                <a href="https://www.tiktok.com/@joma.sessions" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                    <span>@joma.sessions</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Creadores JoMa -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-star"></i> Creadores JoMa</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/maxiprieto_/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>Maxi Prieto (@maxiprieto_)</span>
+                                </a>
+                                <a href="https://www.instagram.com/j.o.t.a.d.e/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>Jota De (@j.o.t.a.d.e)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Entrevistas -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-microphone"></i> Entrevistas</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/basilemanu/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>Manu Basile (@basilemanu)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Equipo Audiovisual -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-clapperboard"></i> Equipo audiovisual</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/j.o.t.a.d.e/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@j.o.t.a.d.e</span>
+                                </a>
+                                <a href="https://www.instagram.com/sebamili87" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@sebamili87</span>
+                                </a>
+                                <a href="https://www.instagram.com/diegocms_" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@diegocms_</span>
+                                </a>
+                                <a href="https://www.instagram.com/tercerojjo" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@tercerojjo</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- La Banda -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-drum"></i> La banda</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/misaosso" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@misaosso <span class="credit-role">(Batería)</span></span>
+                                </a>
+                                <a href="https://www.instagram.com/miles_davis_no_murio" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@miles_davis_no_murio <span class="credit-role">(Bajo)</span></span>
+                                </a>
+                                <a href="https://www.instagram.com/santi.zzo" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@santi.zzo <span class="credit-role">(Teclados)</span></span>
+                                </a>
+                                <a href="https://www.instagram.com/maxiprieto_/" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@maxiprieto_ <span class="credit-role">(Guitarra)</span></span>
+                                </a>
+                                <a href="https://www.instagram.com/unbandoneonista" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@unbandoneonista <span class="credit-role">(Bandoneón)</span></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Mix & Master -->
+                        <div class="credit-category-block">
+                            <span class="credit-category-title"><i class="fa-solid fa-headphones"></i> Mix &amp; Master</span>
+                            <div class="credit-items-list">
+                                <a href="https://www.instagram.com/martinbluenoise" target="_blank" rel="noopener noreferrer" class="credit-chip">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span>@martinbluenoise</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Panel 2: Reel Oficial de Instagram (DbefQdTuo5D) -->
+            <div id="media-panel-ig" class="hidden">
+                <div class="instagram-panel">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DbefQdTuo5D/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DbefQdTuo5D/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Ver esta publicación en Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DbefQdTuo5D/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Una publicación compartida por INDRAKI (@indraki13)</a></p></div></blockquote>
+                </div>
+            </div>
+            <!-- Script oficial de Instagram Embeds -->
+            <script async src="//www.instagram.com/embed.js"></script>
+        </section>
+
+        <!-- 3. COLUMNA CENTRAL DE BOTONES DE ENLACES APILADOS VERTICALMENTE -->
+        <section class="links-column" aria-label="Enlaces principales">
+
+            <!-- Enlace 1: Último Lanzamiento / Streaming -->
+            <a href="#lanzamiento" class="link-card" onclick="handlePlaceholderClick(event, 'Escuchar Último Lanzamiento')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-headphones-simple"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <div class="link-title-row">
+                            <h2 class="link-title">Último Lanzamiento</h2>
+                            <span class="link-badge">Nuevo</span>
+                        </div>
+                        <p class="link-subtitle">Escuchar álbum / single en plataformas digitales</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Enlace 2: Beatmaker Showcase (Abre Modal de Beats) -->
+            <button type="button" class="link-card" onclick="openModal('modal-beats')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <div class="link-title-row">
+                            <h2 class="link-title">Beatmaker Showcase</h2>
+                            <div class="wave-indicator" aria-hidden="true">
+                                <span class="wave-bar"></span>
+                                <span class="wave-bar"></span>
+                                <span class="wave-bar"></span>
+                                <span class="wave-bar"></span>
+                            </div>
+                        </div>
+                        <p class="link-subtitle">Escuchar beats, instrumentales &amp; producciones</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+            </button>
+
+            <!-- Enlace 3: Próximas Fechas (Abre Modal de Fechas y Cuenta Regresiva) -->
+            <button type="button" class="link-card" onclick="openModal('modal-fechas')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <div class="link-title-row">
+                            <h2 class="link-title">Próximas Fechas</h2>
+                            <span class="link-badge">
+                                <span class="status-dot"></span>
+                                15 OCT · 20:30 HS
+                            </span>
+                        </div>
+                        <p class="link-subtitle">Shows en vivo, line-up y cuenta regresiva</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+            </button>
+
+            <!-- Enlace 4: Canal Oficial de YouTube -->
+            <a href="https://www.youtube.com/@indraki13" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <h2 class="link-title">Canal de YouTube</h2>
+                        <p class="link-subtitle">@indraki13 · Videoclips, instrumentales y directos</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <!-- Enlace Adicional: Instagram Oficial -->
+            <a href="https://www.instagram.com/indraki13" target="_blank" rel="noopener noreferrer" class="link-card">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <h2 class="link-title">Instagram Oficial</h2>
+                        <p class="link-subtitle">@indraki13 · Lanzamientos, novedades y contacto directo</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </a>
+
+            <!-- Enlace 5: Gorra Virtual / Apoyo Independiente (Copia de Alias) -->
+            <button type="button" class="link-card" onclick="copyTextPlaceholder('alias.artista.musica', 'Alias copiado al portapapeles')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <h2 class="link-title">Gorra Virtual</h2>
+                        <p class="link-subtitle">ALIAS: <strong>alias.artista.musica</strong></p>
+                    </div>
+                </div>
+                <div class="link-action-icon" title="Copiar alias">
+                    <i class="fa-regular fa-copy"></i>
+                </div>
+            </button>
+
+            <!-- Enlace 6: Contacto Oficial / Booking (Copia de Email) -->
+            <button type="button" class="link-card" onclick="copyTextPlaceholder('contacto@artista-placeholder.com', 'Correo copiado al portapapeles')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <h2 class="link-title">Contacto Oficial</h2>
+                        <p class="link-subtitle">EMAIL: <strong>contacto@artista-placeholder.com</strong></p>
+                    </div>
+                </div>
+                <div class="link-action-icon" title="Copiar correo">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+            </button>
+
+            <!-- Enlace 7: Sobre Mí / Biografía & Press Kit (Abre Modal de Bio) -->
+            <button type="button" class="link-card" onclick="openModal('modal-bio')">
+                <div class="link-card-left">
+                    <div class="theme-icon-box">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <div class="link-card-content">
+                        <h2 class="link-title">Sobre Mí / Press Kit</h2>
+                        <p class="link-subtitle">Biografía oficial, trayectoria y ficha técnica</p>
+                    </div>
+                </div>
+                <div class="link-action-icon">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- 4. FOOTER CON CRÉDITOS Y ENLACE FLASH A JMB -->
+        <footer class="site-footer">
+            <p>&copy; 2026 <strong>iNdraki</strong>.</p>
+            <p>
+                Sitio desarrollado por 
+                <a href="https://www.juanmartinbarrientos.com" target="_blank" rel="noopener noreferrer" class="jmb-flash-link" title="Visitar Juan Martín Barrientos">JMB</a>
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- ======================================================================
+         MODALES INTERACTIVOS (Inspirados en DuendeFunk/Links)
+         ====================================================================== -->
+
+    <!-- Modal 1: Sobre Mí / Biografía -->
+    <div id="modal-bio" class="modal-root" aria-hidden="true" role="dialog" aria-labelledby="modal-bio-title">
+        <div class="modal-backdrop" onclick="closeModal('modal-bio')"></div>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" aria-label="Cerrar modal" onclick="closeModal('modal-bio')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-avatar-mini">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <div>
+                    <h3 id="modal-bio-title" class="modal-title" style="font-family: var(--font-gothic); font-size: 1.8rem; letter-spacing: 0.05em;">iNdraki</h3>
+                    <p class="modal-tagline">"Proyecto Musical &amp; Visual"</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4 class="modal-section-title">Biografía Oficial</h4>
+                <p>Texto de marcador de posición para la biografía oficial del artista. Resumen de comienzos, desarrollo artístico y propuesta estética sonora en la escena independiente.</p>
+
+                <h4 class="modal-section-title"><i class="fa-solid fa-map-location-dot"></i> Trayectoria &amp; Circuito</h4>
+                <div class="modal-highlight-box">
+                    <strong>Ciudad Natal:</strong> Cuna de inicio y primeros pasos en la producción musical.
+                </div>
+                <div class="modal-highlight-box">
+                    <strong>Circuito Vivo:</strong> Participación activa en festivales, open mics y escenarios urbanos.
+                </div>
+
+                <h4 class="modal-section-title"><i class="fa-solid fa-sliders"></i> Faceta Técnica &amp; Estudio</h4>
+                <p>Diseño de sonido, composición de ritmos originales y especialización en instrumentales analógicas y digitales de alta fidelidad.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Próximas Fechas / Shows en Vivo con Cuenta Regresiva -->
+    <div id="modal-fechas" class="modal-root" aria-hidden="true" role="dialog" aria-labelledby="modal-fechas-title">
+        <div class="modal-backdrop" onclick="closeModal('modal-fechas')"></div>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" aria-label="Cerrar modal" onclick="closeModal('modal-fechas')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-avatar-mini">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <div>
+                    <h3 id="modal-fechas-title" class="modal-title">Próximas Fechas</h3>
+                    <p class="modal-tagline">Gira / Presentaciones en Vivo</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Tarjeta del Evento -->
+                <div class="event-card-preview">
+                    <div class="event-date-block">
+                        <span class="event-day">15</span>
+                        <span class="event-month">OCT</span>
+                        <span class="event-year">2026</span>
+                    </div>
+                    <div class="event-meta">
+                        <span class="event-time"><i class="fa-regular fa-clock"></i> 20:30 HS</span>
+                        <h4 class="event-title">FESTIVAL EN VIVO VOL. 2</h4>
+                        <span class="event-badge">Entrada Libre &amp; Gratuita</span>
+                    </div>
+                </div>
+
+                <!-- Cuenta Regresiva -->
+                <div class="countdown-container">
+                    <span class="countdown-heading"><i class="fa-solid fa-hourglass-half"></i> Cuenta Regresiva para el Show</span>
+                    <div class="countdown-grid">
+                        <div class="countdown-slot">
+                            <span class="countdown-number" id="cd-days">12</span>
+                            <span class="countdown-label">Días</span>
+                        </div>
+                        <div class="countdown-slot">
+                            <span class="countdown-number" id="cd-hours">08</span>
+                            <span class="countdown-label">Horas</span>
+                        </div>
+                        <div class="countdown-slot">
+                            <span class="countdown-number" id="cd-mins">45</span>
+                            <span class="countdown-label">Min</span>
+                        </div>
+                        <div class="countdown-slot">
+                            <span class="countdown-number active" id="cd-secs">30</span>
+                            <span class="countdown-label">Seg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-highlight-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Lugar:</strong> Espacio Cultural / Sala Principal<br>
+                        <small style="color: var(--color-text-muted);">Av. Principal 1234 · Ciudad</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Beatmaker Showcase (Catálogo de Pistas de Muestra) -->
+    <div id="modal-beats" class="modal-root" aria-hidden="true" role="dialog" aria-labelledby="modal-beats-title">
+        <div class="modal-backdrop" onclick="closeModal('modal-beats')"></div>
+        <div class="modal-dialog">
+            <button type="button" class="modal-close-btn" aria-label="Cerrar modal" onclick="closeModal('modal-beats')">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-avatar-mini">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <div>
+                    <h3 id="modal-beats-title" class="modal-title">Beatmaker Showcase</h3>
+                    <p class="modal-tagline">Instrumentales &amp; Producción</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>Explorá instrumentales y ritmos creados por el productor. Producción musical, beatmaking, diseño sonoro, mezcla y masterización.</p>
+
+                <!-- Track 1 de Muestra -->
+                <div class="track-row">
+                    <button type="button" class="track-play-btn" onclick="toggleSimulatedPlay(1)" aria-label="Reproducir pista 1">
+                        <i class="fa-solid fa-play" id="track-icon-1"></i>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title-row">
+                            <strong class="track-name">INSTRUMENTAL 101</strong>
+                            <span class="link-badge">Boom Bap</span>
+                        </div>
+                        <span class="track-sub">Producción &amp; Mezcla: Nombre Artista</span>
+                    </div>
+                </div>
+
+                <!-- Track 2 de Muestra -->
+                <div class="track-row">
+                    <button type="button" class="track-play-btn" onclick="toggleSimulatedPlay(2)" aria-label="Reproducir pista 2">
+                        <i class="fa-solid fa-play" id="track-icon-2"></i>
+                    </button>
+                    <div class="track-info">
+                        <div class="track-title-row">
+                            <strong class="track-name">INSTRUMENTAL 505</strong>
+                            <span class="link-badge">Lo-Fi / Soul</span>
+                        </div>
+                        <span class="track-sub">Producción &amp; Mezcla: Nombre Artista</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificación Toast -->
+    <div id="toast" class="toast-notification" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Acción completada</span>
+    </div>
+
+    <!-- Script de Micro-Interacciones -->
+    <script>
+        let toastTimeout;
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            toast.classList.add('show');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2600);
+        }
+
+        function handlePlaceholderClick(event, label) {
+            event.preventDefault();
+            showToast('Enlace de prueba: ' + label);
+        }
+
+        function copyTextPlaceholder(text, confirmMessage) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(() => {});
+            }
+            showToast(confirmMessage + ': ' + text);
+        }
+
+        function toggleMediaTab(type) {
+            const tabYt = document.getElementById('tab-yt');
+            const tabIg = document.getElementById('tab-ig');
+            const tag = document.getElementById('media-status-tag');
+            const panelYt = document.getElementById('media-panel-yt');
+            const panelIg = document.getElementById('media-panel-ig');
+
+            if (type === 'yt') {
+                tabYt.classList.add('active');
+                tabIg.classList.remove('active');
+                panelYt.classList.remove('hidden');
+                panelIg.classList.add('hidden');
+                tag.textContent = 'En Reproducción';
+                showToast('Pestaña cambiada a YouTube');
+            } else {
+                tabIg.classList.add('active');
+                tabYt.classList.remove('active');
+                panelIg.classList.remove('hidden');
+                panelYt.classList.add('hidden');
+                tag.textContent = 'Reel Instagram';
+
+                // Si el video de YouTube estaba sonando, silenciarlo para que no se superpongan audios
+                const iframe = document.getElementById('featured-youtube-video');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.postMessage(JSON.stringify({
+                        event: 'command',
+                        func: 'pauseVideo'
+                    }), '*');
+                }
+
+                // Disparar procesamiento del embed de Instagram si ya cargó el script
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                }
+
+                showToast('Pestaña cambiada a Reel de Instagram');
+            }
+        }
+
+        /* Control de Audio / Desmutear Iframe de YouTube mediante postMessage */
+        let isVideoMuted = true;
+        function toggleMuteVideo() {
+            const iframe = document.getElementById('featured-youtube-video');
+            const overlayBtn = document.getElementById('overlay-unmute-btn');
+            const overlayIcon = document.getElementById('overlay-unmute-icon');
+            const overlayText = document.getElementById('overlay-unmute-text');
+            const bannerBadge = document.getElementById('banner-unmute-badge');
+            const bannerIcon = document.getElementById('banner-unmute-icon');
+            const bannerLabel = document.getElementById('banner-unmute-label');
+
+            if (!iframe || !iframe.contentWindow) return;
+
+            if (isVideoMuted) {
+                // Enviar comando unMute a través de la API JS de YouTube
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: 'unMute'
+                }), '*');
+
+                // Asegurar volumen alto
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: 'setVolume',
+                    args: [100]
+                }), '*');
+
+                isVideoMuted = false;
+                overlayBtn.classList.add('unmuted');
+                overlayIcon.className = 'fa-solid fa-volume-high';
+                overlayText.textContent = 'Mutear';
+
+                bannerIcon.className = 'fa-solid fa-volume-high';
+                bannerLabel.textContent = 'MUTEAR AUDIO';
+                bannerBadge.style.backgroundColor = '#22c55e';
+
+                showToast('Audio activado al 100%');
+            } else {
+                iframe.contentWindow.postMessage(JSON.stringify({
+                    event: 'command',
+                    func: 'mute'
+                }), '*');
+
+                isVideoMuted = true;
+                overlayBtn.classList.remove('unmuted');
+                overlayIcon.className = 'fa-solid fa-volume-xmark';
+                overlayText.textContent = 'Desmutear';
+
+                bannerIcon.className = 'fa-solid fa-volume-xmark';
+                bannerLabel.textContent = 'DESMUTEAR';
+                bannerBadge.style.backgroundColor = '';
+
+                showToast('Video silenciado');
+            }
+        }
+
+        /* Gestión de Modales */
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-root.active').forEach((m) => {
+                    m.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        /* Simulación de Reproductor de Pistas */
+        let activePlayingId = null;
+        function toggleSimulatedPlay(trackId) {
+            const icon = document.getElementById('track-icon-' + trackId);
+            if (activePlayingId === trackId) {
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                activePlayingId = null;
+                showToast('Pista pausada');
+            } else {
+                if (activePlayingId) {
+                    const prevIcon = document.getElementById('track-icon-' + activePlayingId);
+                    if (prevIcon) {
+                        prevIcon.classList.remove('fa-pause');
+                        prevIcon.classList.add('fa-play');
+                    }
+                }
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+                activePlayingId = trackId;
+                showToast('Reproduciendo pista de muestra ' + trackId + ' (Placeholder)');
+            }
+        }
+
+        /* Cuenta regresiva en vivo simulada */
+        setInterval(() => {
+            const secEl = document.getElementById('cd-secs');
+            if (secEl) {
+                let sec = parseInt(secEl.textContent, 10);
+                sec = (sec - 1 + 60) % 60;
+                secEl.textContent = sec < 10 ? '0' + sec : sec;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
