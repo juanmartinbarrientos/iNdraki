@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iNdraki | Enlaces Oficiales</title>
-    <meta name="description" content="Sitio oficial de iNdraki. Productor musical, beatmaker y creaciones sonoras.">
+    <title>Indraki | Enlaces Oficiales</title>
+    <meta name="description" content="Sitio oficial de Indraki (@indraki13). Artista de Traslasierra, Córdoba: canto, rap, poesía y arte conceptual.">
 
-    <!-- Tipografías: Gótica (UnifrakturCook / Pirata One) + Tech/Y2K (VT323, Syne, Outfit) -->
+    <!-- Metadatos Open Graph (WhatsApp, Instagram, Facebook, Twitter) para compartir el enlace -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Indraki | Enlaces Oficiales">
+    <meta property="og:description" content="Sitio oficial de Indraki (@indraki13). Canto, rap, poesía y arte conceptual desde Traslasierra, Córdoba.">
+    <meta property="og:image" content="perfil.png">
+    <meta property="og:image:alt" content="Indraki">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Indraki | Enlaces Oficiales">
+    <meta name="twitter:description" content="Sitio oficial de Indraki (@indraki13). Canto, rap, poesía y arte conceptual desde Traslasierra, Córdoba.">
+    <meta name="twitter:image" content="perfil.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="perfil.png">
+    <link rel="apple-touch-icon" href="perfil.png">
+
+    <!-- Tipografías: Neo-Grotesk Display (Plus Jakarta Sans 900 ExtraBold) + Tech/Y2K (VT323, Syne, Outfit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Pirata+One&family=Syne:wght@700;800&family=UnifrakturCook:wght@700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&family=Space+Grotesk:wght@700&family=Syne:wght@700;800&family=VT323&display=swap" rel="stylesheet">
 
     <!-- FontAwesome 6.4.0 CDN para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,23 +61,20 @@
 
             <!-- Avatar Circular con Flotación y Haz de Luz -->
             <div class="avatar-float-container">
-                <div class="avatar-shine-box" title="Avatar de prueba (Placeholder)">
-                    <div class="avatar-placeholder-art">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <span class="avatar-placeholder-tag">Avatar</span>
-                    </div>
+                <div class="avatar-shine-box" title="Foto de perfil de Indraki">
+                    <img src="perfil.png" alt="Indraki" class="avatar-img">
                     <!-- Haz de luz animado -->
                     <div class="avatar-flash-beam"></div>
                 </div>
             </div>
 
-            <!-- Título Principal con Letra Gótica y Subtítulo Y2K/Tech -->
-            <h1 class="artist-title">iNdraki</h1>
+            <!-- Título Principal con Tipografía Neo-Grotesk ExtraBold y Subtítulo Y2K/Tech -->
+            <h1 class="artist-title">Indraki</h1>
             <p class="artist-subtitle">Lanzamiento Destacado · Disponible Ahora</p>
 
-            <!-- Bio Corta Placeholder -->
+            <!-- Bio Corta Destacada -->
             <p class="artist-bio">
-                <strong>Productor Musical, Beatmaker &amp; Artista Visual.</strong> Texto de marcador de posición para la biografía corta y propuesta estética del proyecto.
+                <strong>Artista de Traslasierra, Córdoba.</strong> Fusión de géneros a través del canto y el rap, con foco en la poesía, melodías y arte visual conceptual.
             </p>
 
             <!-- Fila de Íconos de Redes Sociales -->
@@ -71,7 +85,7 @@
                 <a href="https://www.youtube.com/@indraki13" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube @indraki13" title="YouTube: @indraki13">
                     <i class="fa-brands fa-youtube"></i>
                 </a>
-                <a href="#spotify" class="social-btn" aria-label="Spotify" onclick="handlePlaceholderClick(event, 'Spotify Oficial de iNdraki')">
+                <a href="#spotify" class="social-btn" aria-label="Spotify" onclick="handlePlaceholderClick(event, 'Spotify Oficial de Indraki')">
                     <i class="fa-brands fa-spotify"></i>
                 </a>
                 <a href="#tiktok" class="social-btn" aria-label="TikTok" onclick="handlePlaceholderClick(event, 'TikTok Oficial')">
@@ -411,8 +425,8 @@
                         <i class="fa-solid fa-fingerprint"></i>
                     </div>
                     <div class="link-card-content">
-                        <h2 class="link-title">Sobre Mí / Press Kit</h2>
-                        <p class="link-subtitle">Biografía oficial, trayectoria y ficha técnica</p>
+                        <h2 class="link-title">Sobre Mí / Biografía</h2>
+                        <p class="link-subtitle">Traslasierra · Canto, rap, poesía y arte conceptual</p>
                     </div>
                 </div>
                 <div class="link-action-icon">
@@ -424,7 +438,7 @@
 
         <!-- 4. FOOTER CON CRÉDITOS Y ENLACE FLASH A JMB -->
         <footer class="site-footer">
-            <p>&copy; 2026 <strong>iNdraki</strong>.</p>
+            <p>&copy; 2026 <strong>Indraki</strong>.</p>
             <p>
                 Sitio desarrollado por 
                 <a href="https://www.juanmartinbarrientos.com" target="_blank" rel="noopener noreferrer" class="jmb-flash-link" title="Visitar Juan Martín Barrientos">JMB</a>
@@ -446,27 +460,46 @@
             </button>
             <div class="modal-header">
                 <div class="modal-avatar-mini">
-                    <i class="fa-solid fa-compact-disc"></i>
+                    <img src="perfil.png" alt="Indraki">
                 </div>
                 <div>
-                    <h3 id="modal-bio-title" class="modal-title" style="font-family: var(--font-gothic); font-size: 1.8rem; letter-spacing: 0.05em;">iNdraki</h3>
-                    <p class="modal-tagline">"Proyecto Musical &amp; Visual"</p>
+                    <h3 id="modal-bio-title" class="modal-title" style="font-family: var(--font-heading); font-weight: 900; font-size: 1.7rem; letter-spacing: -0.03em;">Indraki</h3>
+                    <p class="modal-tagline">"Poesía, Canto, Rap &amp; Arte Conceptual"</p>
                 </div>
             </div>
             <div class="modal-body">
-                <h4 class="modal-section-title">Biografía Oficial</h4>
-                <p>Texto de marcador de posición para la biografía oficial del artista. Resumen de comienzos, desarrollo artístico y propuesta estética sonora en la escena independiente.</p>
+                <h4 class="modal-section-title"><i class="fa-solid fa-feather-pointed"></i> Biografía Oficial</h4>
+                <p>
+                    <strong>Indraki</strong> es una artista de <strong>Traslasierra, Córdoba, Argentina</strong>, cuyo proyecto se basa en la fusión de géneros musicales explorados a través del canto y el rap. Su enfoque está puesto en la poesía, las palabras y las melodías.
+                </p>
+                <p>
+                    También se desarrolla como <strong>artista conceptual, visual y audiovisual</strong>. Diseña portadas para sus proyectos y los de otros artistas, buscando transmitir a través de ellas su mundo interno y el de los demás.
+                </p>
 
-                <h4 class="modal-section-title"><i class="fa-solid fa-map-location-dot"></i> Trayectoria &amp; Circuito</h4>
+                <h4 class="modal-section-title"><i class="fa-solid fa-map-location-dot"></i> Raíces &amp; Trayectoria</h4>
                 <div class="modal-highlight-box">
-                    <strong>Ciudad Natal:</strong> Cuna de inicio y primeros pasos en la producción musical.
-                </div>
-                <div class="modal-highlight-box">
-                    <strong>Circuito Vivo:</strong> Participación activa en festivales, open mics y escenarios urbanos.
+                    <i class="fa-solid fa-seedling" style="color: var(--color-text-main); margin-top: 3px;"></i>
+                    <div>
+                        <strong>Buenos Aires &amp; Villa de Las Rosas (Córdoba):</strong><br>
+                        Nació en Buenos Aires, Argentina. A sus seis años se trasladó a Córdoba, precisamente a Villa de Las Rosas, en Traslasierra, donde se crió y forjó sus primeras experiencias y producciones musicales y audiovisuales.
+                    </div>
                 </div>
 
-                <h4 class="modal-section-title"><i class="fa-solid fa-sliders"></i> Faceta Técnica &amp; Estudio</h4>
-                <p>Diseño de sonido, composición de ritmos originales y especialización en instrumentales analógicas y digitales de alta fidelidad.</p>
+                <div class="modal-highlight-box">
+                    <i class="fa-solid fa-earth-americas" style="color: #4ade80; margin-top: 3px;"></i>
+                    <div>
+                        <strong>Experiencia en Río de Janeiro (2022):</strong><br>
+                        En 2022 viajó a Río de Janeiro, donde permaneció durante nueve meses tocando en la calle como fuente de trabajo y generando vínculos a través del rap y el género urbano.
+                    </div>
+                </div>
+
+                <div class="modal-highlight-box">
+                    <i class="fa-solid fa-city" style="color: #38bdf8; margin-top: 3px;"></i>
+                    <div>
+                        <strong>Presente en Buenos Aires:</strong><br>
+                        Luego regresó a Argentina para instalarse en la Ciudad de Buenos Aires, donde hasta la actualidad continúa desarrollando y difundiendo su proyecto artístico.
+                    </div>
+                </div>
             </div>
         </div>
     </div>

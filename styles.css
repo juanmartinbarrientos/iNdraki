@@ -3,8 +3,8 @@
    Inspirada en la estructura y componentes de DuendeFunk/Links
    ========================================================================== */
 
-/* Import Google Fonts: Gótica (Pirata One, UnifrakturCook), Retro/Pixel/Tech (VT323, Syne), Outfit */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Pirata+One&family=Syne:wght@700;800&family=UnifrakturCook:wght@700&family=VT323&display=swap');
+/* Import Google Fonts: Neo-Grotesk Display (Plus Jakarta Sans, Space Grotesk, Syne, Outfit, VT323) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&family=Space+Grotesk:wght@700&family=Syne:wght@700;800&family=VT323&display=swap');
 
 :root {
     /* Paleta de colores estricta solicitada */
@@ -23,8 +23,8 @@
     --glow-primary: rgba(53, 54, 156, 0.55);
     --glow-accent: rgba(200, 199, 147, 0.25);
 
-    /* Familias tipográficas inspiradas en los ejemplos */
-    --font-gothic: 'UnifrakturCook', 'Pirata One', cursive, serif;
+    /* Tipografía del título inspirada en la imagen de muestra (Neo-Grotesk bold / tight) */
+    --font-heading: 'Plus Jakarta Sans', 'Space Grotesk', system-ui, -apple-system, sans-serif;
     --font-tech: 'VT323', monospace;
     --font-display: 'Syne', sans-serif;
     --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
@@ -295,6 +295,21 @@ button {
     color: var(--color-text-muted);
 }
 
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.modal-avatar-mini img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 /* Haz de luz que cruza el avatar */
 .avatar-flash-beam {
     position: absolute;
@@ -335,11 +350,11 @@ button {
 
 /* Título principal y subtítulo / bio */
 .artist-title {
-    font-family: var(--font-gothic);
-    font-size: clamp(2.6rem, 9vw, 3.8rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: 0.04em;
+    font-family: var(--font-heading);
+    font-size: clamp(2.7rem, 10.5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.045em;
     text-transform: none;
     color: var(--color-text-main);
     text-shadow: 0 0 24px var(--glow-primary);
